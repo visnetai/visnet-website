@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Drone Management System</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://uni-dev.visnetai.co/favicon.ico">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .bg-theme { background-color: #0D1117; }
+        .bg-theme-secondary { background-color: #161B22; }
+        .text-theme { color: #2DFFC5; }
+        .border-theme { border-color: #2DFFC5; }
+        .hover-theme:hover { background-color: #2DFFC5; color: #0D1117; }
+        
+        .flight-path {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #2DFFC5;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #2DFFC5;
+            opacity: 0.6;
+        }
+        
+        .flight-path-1 {
+            top: 30%;
+            left: 0;
+            animation: flightPath1 4s linear infinite;
+        }
+        
+        .flight-path-2 {
+            top: 60%;
+            right: 0;
+            animation: flightPath2 4s linear infinite;
+        }
+        
+        @keyframes flightPath1 {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(600px); }
+        }
+        
+        @keyframes flightPath2 {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-600px); }
+        }
+        
+        .drone-grid {
+            background-image: 
+                linear-gradient(rgba(45, 255, 197, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(45, 255, 197, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(45, 255, 197, 0.1);
+            border: 2px solid rgba(45, 255, 197, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-theme text-gray-100">
+    <main>
+        <!-- System Overview -->
+        <section class="bg-theme-secondary py-16">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h1 class="text-4xl font-bold mb-6">
+                            <span class="text-theme">Cloud Drone</span> Management System
+                        </h1>
+                        <p class="text-xl mb-8 text-gray-300">Enterprise-grade drone fleet management with real-time control and monitoring</p>
+                        <a href="https://uni-dev.visnetai.co/register/" class="inline-block border-2 border-theme text-theme px-8 py-3 rounded-lg hover-theme transition duration-300 mb-8 font-bold">
+                            Sign Up Now
+                        </a>
+                        <div class="grid grid-cols-2 gap-4 text-sm">
+                            <div class="flex items-center">
+                                <i class="fas fa-video text-theme mr-2"></i>
+                                Live Streaming
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-route text-theme mr-2"></i>
+                                Flight Planning
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-cloud-upload-alt text-theme mr-2"></i>
+                                S3 Storage
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-chart-line text-theme mr-2"></i>
+                                Telemetry Data
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative overflow-hidden">
+                        <div class="bg-theme p-4 rounded-xl shadow-2xl drone-grid">
+                            <img src="/api/placeholder/600/400" alt="Drone fleet management" class="rounded-lg relative z-10">
+                            <div class="flight-path flight-path-1"></div>
+                            <div class="flight-path flight-path-2"></div>
+                            <div class="absolute -bottom-4 -right-4 bg-theme-secondary border border-theme text-theme p-4 rounded-lg z-20">
+                                <div class="font-bold">Multi-Drone Support</div>
+                                <div class="text-sm">Real-time Control</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="py-16 bg-theme">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold mb-12 text-center">
+                    <span class="text-theme">Core</span> Features
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-theme-secondary p-8 rounded-xl">
+                        <div class="feature-icon">
+                            <i class="fas fa-satellite-dish text-theme"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Live Streaming</h3>
+                        <ul class="space-y-3 text-gray-300">
+                            <li><i class="fas fa-check text-theme mr-2"></i>Multi-drone streaming</li>
+                            <li><i class="fas fa-check text-theme mr-2"></i>Low-latency HD video</li>
+                            <li><i class="fas fa-check text-theme mr-2"></i>Cloud recording</li>
+                            <li><i class="fas fa-check text-theme mr-2"></i>Real-time sharing</li>
+                        </ul>
+                    </div>
+                    <div class="bg-theme-secondary p-8 rounded-xl">
+                        <div class="feature-icon">
+                            <i class="fas fa-location-crosshairs text-theme"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Flight Control</h3>
+                        <ul class="space-y-3 text-gray-300">
+                            <li><i class="fas fa-check text-theme mr-2"></i>Waypoint planning</li>
+                            <li><i class="fas fa-check text-theme mr-2"></i>Geofencing</li>
+                            <li><i class="fas fa-check text-theme mr-2"></i>Automated missions</li>
+                            <li><i class="fas fa-check text-theme mr-2"></i>Fleet coordination</li>
+                        </ul>
+                    </div>
+                    <div class="bg-theme-secondary p-8 rounded-xl">
+                        <div class="feature-icon">
+                            <i class="fas fa-tachometer-alt text-theme"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Telemetry</h3>
+                        <ul class="space-y-3 text-gray-300">
+                            <li><i class="fas fa-check text-theme mr-2"></i>Real-time metrics</li>
+                            <li><i class="fas fa-check text-theme mr-2"></i>Battery monitoring</li>
+                            <li><i class="fas fa-check text-theme mr-2"></i>Flight diagnostics</li>
+                            <li><i class="fas fa-check text-theme mr-2"></i>Performance analytics</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Dashboard -->
+        <section class="py-16 bg-theme-secondary">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold mb-12 text-center">
+                    <span class="text-theme">Live</span> Dashboard
+                </h2>
+                <div class="bg-theme p-8 rounded-xl shadow-2xl">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-theme-secondary p-6 rounded-lg border border-theme border-opacity-20">
+                            <h4 class="text-theme text-lg mb-4">Fleet Status</h4>
+                            <div class="h-48 bg-theme rounded-lg border border-theme border-opacity-10 flex items-center justify-center drone-grid">
+                                <div class="relative">
+                                    <i class="fas fa-drone text-4xl text-theme"></i>
+                                    <div class="propeller absolute -top-4 left-1/2"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-theme-secondary p-6 rounded-lg border border-theme border-opacity-20">
+                            <h4 class="text-theme text-lg mb-4">Live Streams</h4>
+                            <div class="h-48 bg-theme rounded-lg border border-theme border-opacity-10 flex items-center justify-center">
+                                <i class="fas fa-video text-4xl text-theme opacity-20"></i>
+                            </div>
+                        </div>
+                        <div class="bg-theme-secondary p-6 rounded-lg border border-theme border-opacity-20">
+                            <h4 class="text-theme text-lg mb-4">Media Storage</h4>
+                            <div class="h-48 bg-theme rounded-lg border border-theme border-opacity-10 flex items-center justify-center">
+                                <i class="fas fa-cloud text-4xl text-theme opacity-20"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Integration -->
+        <section class="py-16 bg-theme">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold mb-12 text-center">
+                    <span class="text-theme">Cloud</span> Integration
+                </h2>
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-theme-secondary rounded-xl p-8">
+                        <div class="flex items-center mb-4">
+                            <div class="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        </div>
+                        <pre class="bg-theme text-theme p-6 rounded-lg overflow-x-auto">
+# S3 Media Upload Configuration
+s3_config = {
+    "bucket": "your-drone-media",
+    "region": "us-west-2",
+    "streaming": {
+        "quality": "1080p",
+        "format": "h264"
+    }
+}</pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
